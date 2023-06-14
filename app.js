@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(
     cors({
       credentials: true,
-      origin: "https://a5--genuine-fudge-ca1abe.netlify.app",
+      origin: "https://6489bb95dc341700080a1716--mellow-rabanadas-efef15.netlify.app",
       methods: ["GET", "POST","PUT","DELETE"]
     })
    );
