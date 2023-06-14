@@ -8,22 +8,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rahulschandak/tuiter-node-server-app.git"
-  },
   "keywords": [
     "Node",
     "REST",
     "Server",
     "HTTP"
   ],
-  "author": "Rahul Chandak",
+  "author": "Neeraj",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rahulschandak/tuiter-node-server-app/issues"
-  },
-  "homepage": "https://github.com/rahulschandak/tuiter-node-server-app#readme",
   "dependencies": {
     "axios": "^1.4.0",
     "cors": "^2.8.5",

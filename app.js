@@ -1,43 +1,11 @@
 import express from "express";
-import session from "express-session";
 import cors from "cors";
 import HelloController from "./controllers/hello-controller.js";
 import UserController from "./users/users-controller.js";
 import TuitsController from "./controllers/tuits/tuits-controller.js";
 import AuthController from "./users/auth-controller.js";
+import session from "express-session";
 const app = express();
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: "http://localhost:3000",
-//   })
-// );
-app.use((req, res, next) => {
-  const allowedOrigins = [
-    "http://localhost:3000",
-    "https://a5--papaya-salamander-4aad5c.netlify.app/",
-    "https://tuiter-node-server-app-7rwr.onrender.com/api",
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-
-    "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-  );
-
-  res.header("Access-Control-Allow-Credentials", "true");
-
-  res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-
-  next();
-});
 app.use(
   session({
     secret: "any string",
@@ -45,18 +13,18 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 app.use(
-  session({
-    secret: "your-secret-key",
-    resave: false,
-    saveUninitialized: false,
-    store: new session.MemoryStore(),
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
   })
 );
+
 app.use(express.json());
-TuitsController(app);
+const port = process.env.PORT || 4000;
+
 HelloController(app);
 UserController(app);
+TuitsController(app);
 AuthController(app);
-app.listen(process.env.PORT || 4000);
+app.listen(port);
