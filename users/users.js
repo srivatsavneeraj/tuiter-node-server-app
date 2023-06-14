@@ -4,4 +4,3 @@ export default [
     { "username": "charlie", "type": "FACULTY", "_id": "345" }
   ]
   
-  
